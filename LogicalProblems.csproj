@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LogicalProblems.Sum_Of_Numbers_Adhoc</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Basic Challenge 1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sum Of Numbers Adhoc.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
