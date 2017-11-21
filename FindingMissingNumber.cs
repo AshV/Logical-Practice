@@ -25,7 +25,6 @@ class FindingMissingNumber
                         arr[j + 1] = temp;
                     }
 
-
             for (int c = 0; c < N; c++)
                 if (c + 1 != arr[c])
                 {
