@@ -1,2 +1,0 @@
-# Logical-Problems
-Logical Problems
