@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿// https://www.hackerrank.com/contests/smart-interviews/challenges/si-distinct-elements-in-window/problem
+
+using System.Collections.Generic;
 using static System.Console;
 
 class DistinctElementsInWindow
@@ -15,9 +17,9 @@ class DistinctElementsInWindow
             var strInput2 = ReadLine().Split(' ');
             for (int n = 0; n < N-K+1; n++)
             {
-                var distinct = new HashSet<string>();
+                var distinct = new HashSet<int>();
                 for (int k = n; k < n + K; k++)
-                    distinct.Add(strInput2[k]);
+                    distinct.Add(int.Parse(strInput2[k]));
                 Write(distinct.Count + " ");
             }
             WriteLine();
