@@ -15,11 +15,17 @@ class DistinctElementsInWindow
             K = int.Parse(strInput1[1]);
 
             var strInput2 = ReadLine().Split(' ');
-            for (int n = 0; n < N-K+1; n++)
+            for (int n = 0; n < N - K + 1; n++)
             {
-                var distinct = new HashSet<int>();
+                var distinct = new Dictionary<int, int>();
                 for (int k = n; k < n + K; k++)
-                    distinct.Add(int.Parse(strInput2[k]));
+                {
+                    int value;
+                    if (distinct.TryGetValue(int.Parse(strInput2[k]), out value))
+                        distinct.Add(int.Parse(strInput2[k]), value + 1);
+                    else
+                        distinct.Add(int.Parse(strInput2[k]), 1);
+                }
                 Write(distinct.Count + " ");
             }
             WriteLine();
