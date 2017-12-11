@@ -8,27 +8,47 @@ class DistinctElementsInWindow
     static void Main(string[] args)
     {
         int N, K, T = int.Parse(ReadLine());
-        for (int i = 0; i < T; i++)
+        for (int t = 0; t < T; t++)
         {
             var strInput1 = ReadLine().Split(' ');
             N = int.Parse(strInput1[0]);
             K = int.Parse(strInput1[1]);
+            var strInput2 = ReadLine().Trim().Split(' ');
+            var distinct = new Dictionary<string, int>();
 
-            var strInput2 = ReadLine().Split(' ');
-            for (int n = 0; n < N - K + 1; n++)
+            for (int k = 0; k < K; k++)
+                Add(strInput2[k], ref distinct);
+            Write(distinct.Count + " ");
+
+            for (int i = 1; i < N - K + 1; i++)
             {
-                var distinct = new Dictionary<int, int>();
-                for (int k = n; k < n + K; k++)
-                {
-                    int value;
-                    if (distinct.TryGetValue(int.Parse(strInput2[k]), out value))
-                        distinct.Add(int.Parse(strInput2[k]), value + 1);
-                    else
-                        distinct.Add(int.Parse(strInput2[k]), 1);
-                }
+                Remove(strInput2[i-1], ref distinct);
+                Add(strInput2[i + K-1], ref distinct);
+
                 Write(distinct.Count + " ");
             }
             WriteLine();
+        }
+    }
+
+    static void Add(string key, ref Dictionary<string, int> distinct)
+    {
+        int value;
+        if (distinct.TryGetValue(key, out value))
+            distinct[key] = value + 1;
+        else
+            distinct.Add(key, 1);
+    }
+
+    static void Remove(string key, ref Dictionary<string, int> distinct)
+    {
+        int value;
+        if (distinct.TryGetValue(key, out value))
+        {
+            if (value == 1)
+                distinct.Remove(key);
+            else
+                distinct[key] = value - 1;
         }
     }
 }
