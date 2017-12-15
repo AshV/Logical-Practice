@@ -11,7 +11,12 @@ class LargestConcatenatedNumber
         {
             ReadLine();
             string[] strInput = ReadLine().Split(' ');
-            Array.Sort(strInput, (i, j) => j.CompareTo(i));
+            Array.Sort(strInput, (a, b) =>
+            {
+                string ab = a + b;
+                string ba = b + a;
+                return ba.CompareTo(ab);
+            });
             WriteLine(string.Join("", strInput));
         }
     }
