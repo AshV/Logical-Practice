@@ -9,6 +9,9 @@ class RangeOfPrimes
     static void Main(string[] args)
     {
         int Count, A, B, T = int.Parse(ReadLine());
+        var allPrime = new List<int>();
+        for (int a = 1; a < 1000000; a++)
+            if (IsPrime(a)) allPrime.Add(a);
         for (int t = 0; t < T; t++)
         {
             Count = 0;
@@ -17,7 +20,7 @@ class RangeOfPrimes
             B = int.Parse(str[1]);
             for (int r = A; r <= B; r++)
             {
-                if (IsPrime(r)) Count++;
+                if (allPrime.Contains(r)) Count++;
             }
             WriteLine(Count);
         }
